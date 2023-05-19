@@ -30,7 +30,6 @@ class AuthController extends Controller
 
     public function register(Request $request)
     {
-        // Mengisi data dan menyimpan ke database
         $user = User::create([
             'username' => $request->username,
             'email' => $request->email,

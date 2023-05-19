@@ -15,6 +15,7 @@ class TodoController extends Controller
         $id_user = Auth::user()->id;
         $data['todo_list'] = Todo::where('id_user', $id_user)->get();
         $data['user'] = User::where('id', $id_user)->first();
+        $data['list_user'] = DB::table('users')->select('*')->get();
         return view('todo.index', $data);
     }
 
