@@ -32,6 +32,7 @@
 </head>
 
 <body>
+
     <section class="vh-100">
         <div class="container-fluid h-custom">
             <div class="row d-flex justify-content-center align-items-center h-100">
@@ -59,6 +60,13 @@
                         <div class="divider d-flex align-items-center my-4">
                             <p class="text-center fw-bold mx-3 mb-0">Or</p>
                         </div>
+
+                        @if($errors->any())
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <strong>Warning,</strong> Please check your email or password.
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                        @endif
 
                         <!-- Email input -->
                         <div class="form-outline mb-4">
@@ -102,16 +110,16 @@
             <!-- Right -->
             <div>
                 <a href="#!" class="text-white me-4">
-                    <i class="fab fa-facebook-f"></i>
+                    <i class="fa fa-facebook-official" aria-hidden="true"></i>
                 </a>
                 <a href="#!" class="text-white me-4">
-                    <i class="fab fa-twitter"></i>
+                    <i class="fa fa-twitter"></i>
                 </a>
                 <a href="#!" class="text-white me-4">
-                    <i class="fab fa-google"></i>
+                    <i class="fa fa-google" aria-hidden="true"></i>
                 </a>
                 <a href="#!" class="text-white">
-                    <i class="fab fa-linkedin-in"></i>
+                    <i class="fa fa-github"></i>
                 </a>
             </div>
             <!-- Right -->

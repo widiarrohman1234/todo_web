@@ -8,20 +8,29 @@ use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
+    public function loginView()
+    {
+        return view('login');
+    }
 
     public function login(Request $request)
     {
         if (Auth::attempt(['email' => request('email'), 'password' => request('password')])) {
             return redirect('todos/index');
         } else {
-            return redirect('/');
+            return redirect('/')->withErrors('');
         }
     }
 
-    public function store(Request $request)
+    public function registerView()
+    {
+        return view('register');
+    }
+
+
+    public function register(Request $request)
     {
         // Mengisi data dan menyimpan ke database
-        // dd($request->all());
         $user = User::create([
             'username' => $request->username,
             'email' => $request->email,

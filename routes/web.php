@@ -14,26 +14,19 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('login');
-});
-
-Route::get('register', function () {
-    return view('register');
-});
-
-// Route::get('todo/index', function () {
-//     return view('todo.index');
-// });
-
-Route::post('register', [AuthController::class, 'store']);
-Route::get('login', function () {
-    return view('login');
-})->name('login');
+//login
+Route::get('/', [AuthController::class, 'loginView']);
+Route::get('login', [AuthController::class, 'loginView'])->name('login');
 Route::post('login', [AuthController::class, 'login']);
+
+// register
+Route::get('register', [AuthController::class, 'registerView']);
+Route::post('register', [AuthController::class, 'register']);
+
+//logout
 Route::get('logout', [AuthController::class, 'logout']);
 
+//todo
 Route::get('todos/index', [TodoController::class, 'index'])->name('todos')->middleware('auth');;
 Route::post('todos-status/{id}', [TodoController::class, 'todoStatus']);
 Route::post('todos', [TodoController::class, 'store']);
