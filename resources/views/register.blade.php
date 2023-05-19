@@ -39,9 +39,10 @@
                     <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp" class="img-fluid" alt="Sample image">
                 </div>
                 <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-                    <form>
+                    <form action="{{url('register')}}" method="post">
+                        @csrf
                         <div class="text-center mb-3">
-                            <p>Sign up with:</p>
+                            <p>Register with:</p>
                             <button type="button" class="btn btn-link btn-floating mx-1">
                                 <i class="fa fa-facebook-official" aria-hidden="true"></i>
                             </button>
@@ -54,54 +55,45 @@
                                 <i class="fa fa-twitter" aria-hidden="true"></i>
                             </button>
 
-                            <button type="button" class="btn btn-link btn-floating mx-1">
+                            <button type="submit" class="btn btn-link btn-floating mx-1">
                                 <i class="fa fa-github" aria-hidden="true"></i>
                             </button>
                         </div>
 
                         <p class="text-center">or:</p>
 
-                        <!-- Name input -->
-                        <div class="form-outline mb-4">
-                            <input type="text" id="registerName" class="form-control" />
-                            <label class="form-label" for="registerName">Name</label>
-                        </div>
-
                         <!-- Username input -->
                         <div class="form-outline mb-4">
-                            <input type="text" id="registerUsername" class="form-control" />
                             <label class="form-label" for="registerUsername">Username</label>
+                            <input type="text" name="username" class="form-control" />
                         </div>
 
                         <!-- Email input -->
                         <div class="form-outline mb-4">
-                            <input type="email" id="registerEmail" class="form-control" />
                             <label class="form-label" for="registerEmail">Email</label>
+                            <input type="email" name="email" class="form-control" />
                         </div>
 
                         <!-- Password input -->
                         <div class="form-outline mb-4">
-                            <input type="password" id="registerPassword" class="form-control" />
                             <label class="form-label" for="registerPassword">Password</label>
-                        </div>
-
-                        <!-- Repeat Password input -->
-                        <div class="form-outline mb-4">
-                            <input type="password" id="registerRepeatPassword" class="form-control" />
-                            <label class="form-label" for="registerRepeatPassword">Repeat password</label>
+                            <input type="password" name="password" class="form-control" />
                         </div>
 
                         <!-- Checkbox -->
-                        <div class="form-check justify-content-center mb-4">
+                        <!-- <div class="form-check justify-content-center mb-4">
                             <input class="form-check-input me-2" type="checkbox" value="" id="registerCheck" checked aria-describedby="registerCheckHelpText" />
                             <label class="form-check-label" for="registerCheck">
                                 I have read and agree to the terms
                             </label>
-                        </div>
+                        </div> -->
 
                         <!-- Submit button -->
                         <button type="submit" class="btn btn-primary btn-block mb-3">Sign in</button>
                     </form>
+                    <div class="text-center text-lg-start mt-4 pt-2">
+                        <p class="small fw-bold mt-2 pt-1 mb-0">You already have an account? <a href="{{url('/')}}" class="link-danger">login</a></p>
+                    </div>
                 </div>
             </div>
         </div>
