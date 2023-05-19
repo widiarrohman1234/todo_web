@@ -1,0 +1,2 @@
+table todo
+id|todo|status_finish|created_at|updated_at
