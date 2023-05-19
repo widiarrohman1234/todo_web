@@ -24,6 +24,30 @@
 <div class="p-5 text-center bg-light" style="margin-top: 58px;">
     <h1 class="mb-3">Hello, {{$user->username}}. How Are you?</h1>
     <h4 class="mb-3">I hope today's efforts do not betray tomorrow's results</h4>
+
+    <table class="table caption-top">
+        <caption>List of users</caption>
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Username</th>
+                <th scope="col">Email</th>
+                <th scope="col">Created at</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($list_user as $d)
+            <tr>
+                <th scope="row">{{$loop->iteration}}</th>
+                <td>{{$d->username}}</td>
+                <td>{{$d->email}}</td>
+                <td>{{$d->created_at}}</td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
 </div>
 <!-- /Jumbotron -->
+
+
 @endsection
