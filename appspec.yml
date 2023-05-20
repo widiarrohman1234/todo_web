@@ -2,4 +2,4 @@ version: 0.0
 os: linux
 files:
   - source: /
-    destination: /home/ubuntu/web-todo-laravel
+    destination: /var/www/html/web-todo-laravel
