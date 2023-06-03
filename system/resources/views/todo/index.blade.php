@@ -113,6 +113,7 @@
                                                         @csrf
                                                         @method("PUT")
                                                         <input type="hidden" value="{{$t->id}}" name="id">
+                                                        <input type="hidden" value="{{request()->user()->id}}" name="id_user">
                                                         <div class="form-group">
                                                             <label for="recipient-name" class="col-form-label">Are you done?</label><br>
                                                             <!-- <input type="text" class="form-control" id="recipient-name"> -->

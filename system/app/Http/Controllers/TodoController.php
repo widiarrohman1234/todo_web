@@ -56,19 +56,8 @@ class TodoController extends Controller
 
     public function update(Request $request, $id)
     {
-        // dd(request()->all());
-        // dd($id);
-
-        //
-        // $validator = Validator::make($request->all(), [
-        //     'todos' => 'required',
-        // ]);
-
-        // if ($validator->fails())
-        // {
-        //     return redirect()->route('todos.edit',['todo'=>$id])->withErrors($validator);
-        // }
         $todo = Todo::where('id', $id)->first();
+        $todo->id_user = $request->id_user;
         $todo->todos = $request->todos;
         $todo->status_finish = 1;
         $todo->save();
