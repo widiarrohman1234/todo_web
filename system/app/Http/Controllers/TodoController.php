@@ -7,6 +7,7 @@ use App\Models\Todo;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 class TodoController extends Controller
 {
@@ -16,11 +17,16 @@ class TodoController extends Controller
         $data['todo_list'] = Todo::where('id_user', $id_user)->get();
         $data['user'] = User::where('id', $id_user)->first();
         $data['list_user'] = DB::table('users')->select('*')->get();
+        $data['todo_lists'] = DB::table('todos')->select('*')->get();
         return view('todo.index', $data);
     }
 
-    public function create()
+    public function create(Request $request)
     {
+        Todo::create([
+            'todo' => $request->get('todo')
+        ]);
+        return redirect()->route('todos.index')->with('success', 'Inserted');
     }
 
     public function store(Request $request)
@@ -43,17 +49,36 @@ class TodoController extends Controller
 
     public function edit($id)
     {
-        //
+        dd(request()->all());
+        $todo = Todo::where('id', $id)->first();
+        return view('edit-todo', compact('todo'));
     }
 
     public function update(Request $request, $id)
     {
+        // dd(request()->all());
+        // dd($id);
+
         //
+        // $validator = Validator::make($request->all(), [
+        //     'todos' => 'required',
+        // ]);
+
+        // if ($validator->fails())
+        // {
+        //     return redirect()->route('todos.edit',['todo'=>$id])->withErrors($validator);
+        // }
+        $todo = Todo::where('id', $id)->first();
+        $todo->todos = $request->todos;
+        $todo->status_finish = 1;
+        $todo->save();
+
+        return redirect()->route('todos')->with('success', 'Updated Todo');
     }
 
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        $delete = DB::table('todos')->where('todos.id', $id)->delete();
-        return redirect('todos/index');
+        $request = Todo::where('id', $id)->delete();
+        return redirect()->route('todos')->with('success', 'Deleted Todo');
     }
 }

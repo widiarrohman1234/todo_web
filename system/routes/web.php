@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\TodoController;
+use App\Http\Controllers\TodosController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,7 +28,9 @@ Route::post('register', [AuthController::class, 'register']);
 Route::get('logout', [AuthController::class, 'logout']);
 
 //todo
-Route::get('todos/index', [TodoController::class, 'index'])->name('todos')->middleware('auth');;
+Route::get('todos/index', [TodoController::class, 'index'])->name('todos')->middleware('auth');
 Route::post('todos-status/{id}', [TodoController::class, 'todoStatus']);
-Route::post('todos', [TodoController::class, 'store']);
-Route::delete('todos/{id}', [TodoController::class, 'destroy']);
+Route::post('todos', [TodoController::class, 'store'])->name('todos.store');
+Route::delete('todos/{id}', [TodoController::class, 'destroy'])->name('todos.destroy');
+Route::post('todos/create', [TodoController::class, 'create'])->name('todos.create');
+Route::put('todos/{id}/edit', [TodoController::class, 'update'])->name('todos.edit');

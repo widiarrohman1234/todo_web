@@ -8,6 +8,7 @@ $baseDir = dirname($vendorDir);
 return array(
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
+    'App\\Http\\Controllers\\AuthController' => $baseDir . '/app/Http/Controllers/AuthController.php',
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
     'App\\Http\\Controllers\\TodoController' => $baseDir . '/app/Http/Controllers/TodoController.php',
     'App\\Http\\Kernel' => $baseDir . '/app/Http/Kernel.php',
@@ -3747,6 +3748,7 @@ return array(
     'Psy\\Sudo' => $vendorDir . '/psy/psysh/src/Sudo.php',
     'Psy\\Sudo\\SudoVisitor' => $vendorDir . '/psy/psysh/src/Sudo/SudoVisitor.php',
     'Psy\\SuperglobalsEnv' => $vendorDir . '/psy/psysh/src/SuperglobalsEnv.php',
+    'Psy\\SystemEnv' => $vendorDir . '/psy/psysh/src/SystemEnv.php',
     'Psy\\TabCompletion\\AutoCompleter' => $vendorDir . '/psy/psysh/src/TabCompletion/AutoCompleter.php',
     'Psy\\TabCompletion\\Matcher\\AbstractContextAwareMatcher' => $vendorDir . '/psy/psysh/src/TabCompletion/Matcher/AbstractContextAwareMatcher.php',
     'Psy\\TabCompletion\\Matcher\\AbstractDefaultParametersMatcher' => $vendorDir . '/psy/psysh/src/TabCompletion/Matcher/AbstractDefaultParametersMatcher.php',
