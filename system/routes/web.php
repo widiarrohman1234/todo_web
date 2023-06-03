@@ -31,6 +31,6 @@ Route::get('logout', [AuthController::class, 'logout']);
 Route::get('todos/index', [TodoController::class, 'index'])->name('todos')->middleware('auth');
 Route::post('todos-status/{id}', [TodoController::class, 'todoStatus']);
 Route::post('todos', [TodoController::class, 'store'])->name('todos.store');
-Route::delete('todos/{id}', [TodoController::class, 'destroy']);
+Route::delete('todos/{id}', [TodoController::class, 'destroy'])->name('todos.destroy');
 Route::post('todos/create', [TodoController::class, 'create'])->name('todos.create');
-Route::get('todos/{id}/edit', [TodoController::class, 'update'])->name('todos.edit');
+Route::put('todos/{id}/edit', [TodoController::class, 'update'])->name('todos.edit');
