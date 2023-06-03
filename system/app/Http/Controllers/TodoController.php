@@ -7,6 +7,7 @@ use App\Models\Todo;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 class TodoController extends Controller
 {
@@ -23,10 +24,9 @@ class TodoController extends Controller
     public function create(Request $request)
     {
         Todo::create([
-            'todo'=>$request->get('todo')
+            'todo' => $request->get('todo')
         ]);
-               return redirect()->route('todos.index')->with('success', 'Inserted');
-
+        return redirect()->route('todos.index')->with('success', 'Inserted');
     }
 
     public function store(Request $request)
@@ -49,24 +49,28 @@ class TodoController extends Controller
 
     public function edit($id)
     {
-        $todo=Todo::where('id',$id)->first();
-        return view('edit-todo',compact('todo'));
+        dd(request()->all());
+        $todo = Todo::where('id', $id)->first();
+        return view('edit-todo', compact('todo'));
     }
 
     public function update(Request $request, $id)
     {
-        //
-        $validator = Validator::make($request->all(), [
-            'todos' => 'required',
-        ]);
+        // dd(request()->all());
+        // dd($id);
 
-        if ($validator->fails())
-        {
-            return redirect()->route('todos.edit',['todo'=>$id])->withErrors($validator);
-        }
-        $todo=Todo::where('id',$id)->first();
-        $todo->title=$request->get('todos');
-        $todo->is_completed=$request->get('status_finish');
+        //
+        // $validator = Validator::make($request->all(), [
+        //     'todos' => 'required',
+        // ]);
+
+        // if ($validator->fails())
+        // {
+        //     return redirect()->route('todos.edit',['todo'=>$id])->withErrors($validator);
+        // }
+        $todo = Todo::where('id', $id)->first();
+        $todo->todos = $request->todos;
+        $todo->status_finish = 1;
         $todo->save();
 
         return redirect()->route('todos')->with('success', 'Updated Todo');
@@ -74,7 +78,7 @@ class TodoController extends Controller
 
     public function destroy(Request $request, $id)
     {
-        $request=Todo::where('id', $id)->delete();
+        $request = Todo::where('id', $id)->delete();
         return redirect()->route('todos')->with('success', 'Deleted Todo');
     }
 }

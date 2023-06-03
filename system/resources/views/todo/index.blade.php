@@ -92,8 +92,47 @@
                                 </td>
                                 <td>{{$t->created_at}}</td>
                                 <td>
-                                    <form action="{{route('todos.destroy', $t->id)}}" method="POST">
-                                        <a class="btn btn-primary">Edit</a>
+                                    <!-- Button trigger modal -->
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal{{$t->id}}">
+                                        Edit
+                                    </button>
+
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="exampleModal{{$t->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+
+                                                    <form action="{{route('todos.edit', $t->id)}}" method="POST" onsubmit="return confirm('Apakah anda yakin sudah selesai ??')">
+                                                        @csrf
+                                                        @method("PUT")
+                                                        <input type="hidden" value="{{$t->id}}" name="id">
+                                                        <div class="form-group">
+                                                            <label for="recipient-name" class="col-form-label">Are you done?</label><br>
+                                                            <!-- <input type="text" class="form-control" id="recipient-name"> -->
+                                                            <button type="submit" class="btn btn-primary">Finish</button>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="message-text" class="col-form-label">Todo:</label>
+                                                            <textarea class="form-control" id="message-text" name="todos">{{$t->todos}}</textarea>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <form action="{{route('todos.destroy', $t->id)}}" method="POST" onsubmit="return confirm('Apakah anda yakin akan menghapus data ini ??')">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger">Delete</button>
