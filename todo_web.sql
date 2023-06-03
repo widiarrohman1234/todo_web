@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: May 31, 2023 at 11:41 AM
+-- Generation Time: Jun 03, 2023 at 05:46 PM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -81,11 +81,9 @@ CREATE TABLE `todos` (
 --
 
 INSERT INTO `todos` (`id`, `id_user`, `todos`, `status_finish`, `created_at`, `updated_at`) VALUES
-(3, 1, 'www', 1, '2023-05-18 04:09:57', '2023-05-18 04:09:57'),
-(4, 2, 'qqq', 0, '2023-05-18 04:54:59', '2023-05-18 04:54:59'),
-(6, 2, 'ww', 1, '2023-05-18 05:06:46', '2023-05-18 05:06:46'),
-(8, 1, 'aaaaa', 0, '2023-05-18 20:09:06', '2023-05-18 20:09:06'),
-(9, 1, ',,,', 0, '2023-05-18 20:09:12', '2023-05-18 20:09:12');
+(1, NULL, 'Ojo medheni rek...', 0, '2023-06-03 10:45:41', '2023-06-03 10:45:41'),
+(2, NULL, 'kalau mencari yang sempurna, aku bukan orangnya', 0, '2023-06-03 10:45:56', '2023-06-03 10:45:56'),
+(3, 1, 'udah malem, aku mau tidur dulu, dah.. selamat malam', 1, '2023-06-03 10:46:12', '2023-06-03 10:46:17');
 
 -- --------------------------------------------------------
 
@@ -107,8 +105,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `email`, `password`, `created_at`, `updated_at`) VALUES
-(1, 'd', 'widi@sidafa.id', '$2y$10$WTELZBJyl3AD72zjR8vtReVBAgcGLnuGeIhV6dk0aiYtGwsxavHFW', '2023-05-18 04:30:11', '2023-05-18 04:30:11'),
-(2, 'Widi Arrohman', 'admin@gmail.com', '$2y$10$Q7XSyofEicR05GAyPPsWKO1gSV4xmZ4vJKzAjXdl/a/jzwoFYIRQG', '2023-05-18 04:55:59', '2023-05-18 04:55:59');
+(1, 'user1', 'user1@gmail.com', '$2y$10$05rFA/FCBy6A1QfZ.dUbjuZHIXZdQDzzKUqOjX/jB9PaeNt9JqlnK', '2023-06-03 10:45:20', '2023-06-03 10:45:20');
 
 --
 -- Indexes for dumped tables
@@ -161,13 +158,13 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `todos`
 --
 ALTER TABLE `todos`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
