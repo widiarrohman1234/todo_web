@@ -49,7 +49,6 @@ class TodoController extends Controller
 
     public function edit($id)
     {
-        //
         $todo=Todo::where('id',$id)->first();
         return view('edit-todo',compact('todo'));
     }
@@ -73,14 +72,9 @@ class TodoController extends Controller
         return redirect()->route('todos')->with('success', 'Updated Todo');
     }
 
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        // $delete = DB::table('todos')->where('todos.id', $id)->delete();
-        $todo = Todo::findOrFail($id);
-        $todo->delete();
-        // $todo = Todo::findOrFail($id);
-        // $todo->delete();
-        // return redirect()->route('todos')->with('success', 'Deleted Todo');
-        return redirect('todos/index');
-    }  
+        $request=Todo::where('id', $id)->delete();
+        return redirect()->route('todos')->with('success', 'Deleted Todo');
+    }
 }

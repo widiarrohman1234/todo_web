@@ -92,9 +92,12 @@
                                 </td>
                                 <td>{{$t->created_at}}</td>
                                 <td>
-                                    <a class="btn btn-danger">Edit</a>
-                                    <!-- <a class="btn btn-danger">Delete</a> -->
-                                    <a class="btn btn-danger" method="DELETE" href="{{route('todos.destroy', $t->id)}}">delete</a>
+                                    <form action="{{route('todos.destroy', $t->id)}}" method="POST">
+                                        <a class="btn btn-primary">Edit</a>
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                    </form>
                                 </td>
                             </tr>
 
