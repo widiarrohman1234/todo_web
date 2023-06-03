@@ -52,6 +52,7 @@
 
         <form class="row g-3 justify-content-center" method="POST" action="{{route('todos.store')}}">
             @csrf
+            <input type="hidden" name="id_user" value="{{request()->user()->id}}">
             <div class="col-6">
                 <input type="text" class="form-control" name="todos" placeholder="Title">
             </div>
